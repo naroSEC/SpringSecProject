@@ -5,7 +5,6 @@ import com.spbt.secproject.dto.AccountFormDto;
 import com.spbt.secproject.entity.Account;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.apache.commons.codec.digest.DigestUtils;
 
 @Service
 @RequiredArgsConstructor

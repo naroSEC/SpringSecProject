@@ -7,7 +7,6 @@ import com.spbt.secproject.entity.Account;
 import com.spbt.secproject.repository.AccountRepository;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

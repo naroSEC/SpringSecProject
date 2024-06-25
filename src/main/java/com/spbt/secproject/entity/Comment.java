@@ -1,13 +1,9 @@
 package com.spbt.secproject.entity;
 
-import com.spbt.secproject.constant.AccountRole;
-import com.spbt.secproject.dto.AccountFormDto;
 import com.spbt.secproject.dto.CommentFormDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.codec.digest.DigestUtils;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

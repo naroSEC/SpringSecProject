@@ -1,7 +1,6 @@
 package com.spbt.secproject.repository;
 
 import com.spbt.secproject.dto.BoardCommentFormDto;
-import com.spbt.secproject.dto.CommentFormDto;
 import com.spbt.secproject.entity.Comment;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.data.jpa.repository.JpaRepository;

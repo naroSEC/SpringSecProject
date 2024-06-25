@@ -2,10 +2,8 @@ package com.spbt.secproject.entity;
 
 import com.spbt.secproject.constant.AccountRole;
 import com.spbt.secproject.dto.AccountFormDto;
-import com.spbt.secproject.dto.ChangeAccountPwDto;
-import lombok.Data;
 import jakarta.persistence.*;
-import org.apache.commons.codec.digest.DigestUtils;
+import lombok.Data;
 
 @Table(name="account")
 @Entity

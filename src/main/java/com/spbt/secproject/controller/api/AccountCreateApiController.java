@@ -5,15 +5,14 @@ import com.spbt.secproject.entity.Account;
 import com.spbt.secproject.service.CustomUserDetailService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.json.simple.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.json.simple.JSONObject;
 
 import java.util.HashMap;
 import java.util.List;

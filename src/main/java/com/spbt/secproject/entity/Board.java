@@ -1,6 +1,5 @@
 package com.spbt.secproject.entity;
 
-import com.spbt.secproject.constant.AccountRole;
 import com.spbt.secproject.dto.PostsFormDto;
 import jakarta.persistence.*;
 import lombok.Getter;

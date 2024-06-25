@@ -3,15 +3,12 @@ package com.spbt.secproject.service;
 import com.spbt.secproject.entity.Account;
 import com.spbt.secproject.entity.ProfileImg;
 import com.spbt.secproject.repository.ProfileImgRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.thymeleaf.util.StringUtils;
-
-import java.io.File;
 
 @Service
 @RequiredArgsConstructor

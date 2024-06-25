@@ -1,6 +1,5 @@
 package com.spbt.secproject.dto;
 
-import com.spbt.secproject.entity.Board;
 import com.spbt.secproject.entity.ProfileImg;
 import lombok.Data;
 import org.modelmapper.ModelMapper;

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main/mainViewLayout}" lang="ko">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap">
+    <link rel="stylesheet" href="/css/common/main/board/list.css">
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="/js/common/main/board/list.js"></script>
+</th:block>
+
+<main layout:fragment="content" class="px-3">
+    <div class="task-manager">
+        <div class="left-bar">
+            <div class="upper-part">
+                <div class="actions">
+                    <div class="circle"></div>
+                    <div class="circle-2"></div>
+                </div>
+            </div>
+            <div class="left-content">
+                <ul class="action-list">
+                    <li class="item" onclick="location.href='/main/board/list'">
+                        <i class="far fa-clipboard me-2"></i>
+                        <span>게시글 목록</span>
+                    </li>
+                    <li class="item" onclick="location.href='/main/board/write'">
+                        <i class="fas fa-pencil-alt me-2"></i>
+                        <span>게시글 작성</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="header">게시판</div>
+            <div class="content-categories">
+                <div class="label-wrapper">
+                    <input class="nav-item" name="nav" type="radio" id="opt-1" checked>
+                    <label class="category" for="opt-1">전체</label>
+                </div>
+                <div class="label-wrapper">
+                    <input class="nav-item" name="nav" type="radio" id="opt-2">
+                    <label class="category" for="opt-2">공지사항</label>
+                </div>
+                <div class="label-wrapper">
+                    <input class="nav-item" name="nav" type="radio" id="opt-3">
+                    <label class="category" for="opt-3">자유게시판</label>
+                </div>
+                <div class="label-wrapper">
+                    <input class="nav-item" name="nav" type="radio" id="opt-4">
+                    <label class="category" for="opt-4">이벤트</label>
+                </div>
+            </div>
+            <div class="tasks-wrapper">
+                <th:block th:each="boardPostsFormDto : ${boardPostsFormDtos}">
+                    <div class="task">
+                        <i class="far fa-comment bd-icon"></i>
+                        <span class="label-text" th:onclick="'viewPage(' + ${boardPostsFormDto.Id} + ')'">[[${boardPostsFormDto.postsTitle}]]</span>
+                        <span th:class="${boardPostsFormDto.role eq 'ADMIN' ? 'tag manager' : 'tag user'}">[[${boardPostsFormDto.role eq 'ADMIN' ? '관리자' : boardPostsFormDto.userName}]]</span>
+                    </div>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</main>

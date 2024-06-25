@@ -1,0 +1,301 @@
+.pass-input-form {
+    display: grid;
+}
+.pass-container {
+  position: relative;
+  perspective: 80;
+  border-radius: 100vw;
+}
+.ripple {
+  position: absolute;
+  width: 180px;
+  height: 70px;
+  z-index: 90;
+  right: 0;
+  transition: transform 0.2s;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 25px;
+  overflow: hidden;
+  border-radius: 100vw;
+  pointer-events: none;
+}
+.ripple.animate:before {
+  -webkit-animation: clicked 0.4s forwards cubic-bezier(0.5, 0.61, 0.36, 1);
+          animation: clicked 0.4s forwards cubic-bezier(0.5, 0.61, 0.36, 1);
+}
+.ripple:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.1);
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  right: 41px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(50%, -50%) scale(0.5);
+  pointer-events: none;
+}
+@-webkit-keyframes clicked {
+  0% {
+    opacity: 0;
+    transform: translate(50%, -50%) scale(0.5);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(50%, -50%) scale(1.2);
+  }
+}
+@keyframes clicked {
+  0% {
+    opacity: 0;
+    transform: translate(50%, -50%) scale(0.5);
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(50%, -50%) scale(1.2);
+  }
+}
+
+.toggle {
+  position: absolute;
+  width: 85px;
+  height: 70px;
+  background: transparent;
+  z-index: 100;
+  right: 0;
+  top: 0;
+  transition: transform 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 100vw;
+  cursor: pointer;
+}
+.toggle:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 35px;
+  top: 25px;
+  height: 2px;
+  background: black;
+  transform-origin: top left;
+  transform: rotateZ(46deg);
+  transition: width 0.13s ease-out;
+}
+.toggle[data-state=visible]:before {
+  width: 25px;
+}
+.toggle[data-state=hidden]:before {
+  width: 0;
+}
+.toggle .eye {
+  fill: #000000;
+  transition: transform 0.13s linear;
+  stroke-width: 0;
+  transform: scale(1) rotateY(0);
+}
+.toggle .eye path {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-miterlimit: 5;
+  stroke: #000000;
+}
+.toggle:active {
+  transform: scale(0.9);
+}
+.toggle:active + input {
+  transform: rotateY(1deg);
+  letter-spacing: 1.5px;
+  box-shadow: 3px 0px 15px 0px #c1e6d0;
+  cursor: text;
+}
+.toggle:active + input.password {
+  letter-spacing: 3px;
+}
+.toggle:active:before {
+  transform: rotateZ(46deg) rotateY(5deg);
+}
+.toggle:active .eye {
+  transform: scale(0.75) rotateY(5deg);
+}
+
+.mp-form-style input {
+  width: 100%;
+  height: 70px;
+  background-color: #50555b;
+  color: white;
+  border-radius: 10px;
+  will-change: transform;
+  border-radius: 100vw;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 20px;
+  outline: none;
+  text-align: left;
+  border: 0;
+  padding: 10px 80px 10px 30px;
+  transform-origin: left center;
+  transition: transform 0.13s;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0px 0px 20px 0px #0f0;
+  transition: letter-spacing 0.13s ease-out, box-shadow 0.13s ease-out;
+}
+input::-moz-selection {
+  background: #d4fce4;
+}
+input::selection {
+  background: #d4fce4;
+}
+input::-moz-placeholder {
+  color: #c1e6d0;
+}
+input:-ms-input-placeholder {
+  color: #c1e6d0;
+}
+input::placeholder {
+  color: white;
+}
+input.password {
+  letter-spacing: 1px;
+}
+
+
+/* pss form css */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.mp-form-style .signin
+{
+  position: relative;
+  width: 100%;
+  background: #0b121b;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  border-radius: 3%;
+  box-shadow: 0 15px 35px rgba(0,0,0,9);
+  margin: 20px 40px;
+}
+.mp-form-style .signin .content
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  margin: 0 150px
+}
+.mp-form-style .signin .content h2
+{
+  font-size: 2em;
+  color: #0f0;
+  text-transform: uppercase;
+}
+.mp-form-style .signin .content .form
+{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.mp-form-style .signin .content .form .inputBox
+{
+  position: relative;
+  width: 100%;
+}
+.mp-form-style .signin .content .form .inputBox input
+{
+  position: relative;
+  width: 100%;
+  background: #333;
+  border: none;
+  outline: none;
+  padding: 25px 10px 7.5px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1em;
+}
+.mp-form-style .signin .content .form .inputBox i
+{
+  position: absolute;
+  left: 0;
+  padding: 15px 10px;
+  font-style: normal;
+  color: #aaa;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.signin .content .form .inputBox input:focus ~ i,
+.signin .content .form .inputBox input:valid ~ i
+{
+  transform: translateY(-7.5px);
+  font-size: 0.8em;
+  color: #fff;
+}
+.signin .content .form .links
+{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.signin .content .form .links a
+{
+  color: #fff;
+  text-decoration: none;
+}
+.signin .content .form .links a:nth-child(2)
+{
+  color: #0f0;
+  font-weight: 600;
+}
+.signin .content .form .inputBox input[type="submit"]
+{
+  padding: 10px;
+  background: #0f0;
+  color: #000;
+  font-weight: 600;
+  font-size: 1.35em;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  text-align: center;
+}
+input[type="submit"]:active
+{
+  opacity: 0.6;
+}
+@media (max-width: 900px)
+{
+  .mp-form-style span
+  {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
+}
+@media (max-width: 600px)
+{
+  .mp-form-style span
+  {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
+}

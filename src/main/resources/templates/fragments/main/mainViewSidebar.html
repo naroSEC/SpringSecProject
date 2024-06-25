@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="kr">
+
+<div th:fragment="sidebar">
+    <button class="sidebar-toggle">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="sidebar d-flex flex-column flex-shrink-0 p-3 text-white h-100 bd-right-custom">
+        <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <i class="fab fa-slack ms-3 me-2"></i>
+            <span class="fs-4">SECURITY</span>
+            <i class="sidebar-close fas fa-chevron-left"></i>
+        </a>
+        <hr/>
+        <ul class="nav nav-pills flex-column mb-auto txt-align-custom">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                    <i class="fas fa-home me-2"></i>
+                    게시판
+                </a>
+            </li>
+            <li>
+                <a href="/main/user/mypage" class="nav-link text-white">
+                    <i class="fas fa-igloo me-2"></i>
+                    마이페이지
+                </a>
+            </li>
+        </ul>
+        <hr/>
+        <div class="dropup" id="drop-act">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <th:block th:if="${profileImgFormDto != null}">
+                    <img th:src="${profileImgFormDto.imgUrl}" alt="" width="32" height="32" class="rounded-circle me-2">
+                </th:block>
+                <th:block th:if="${profileImgFormDto == null}">
+                    <img src="/rsc/img/main/profile.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                </th:block>
+                <strong>More</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="/main/user/mypage">My Page</a></li>
+                <li><a class="dropdown-item" href="#"></a></li>
+                <li><a class="dropdown-item" href="#"></a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logoutProc">LogOut</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</html>

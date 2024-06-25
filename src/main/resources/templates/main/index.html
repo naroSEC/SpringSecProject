@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main/layout}" lang="ko">
+
+<th:block layout:fragment="css">
+   <link rel="stylesheet" href="/css/common/main/index.css">
+   <link rel="stylesheet" href="/css/common/lib/gilroy-webfont.css">
+</th:block>
+
+<th:block layout:fragment="script">
+   <script src="/js/common/main/index.js"></script>
+</th:block>
+
+<main layout:fragment="content" class="content">
+   <div class="Menu">
+      <ul class="Menu-list" data-offset="10">
+         <li class="Menu-list-item" data-offset="20" onclick>
+            Home
+            <span class="Mask"><span onclick="location.href='/main/board/list'">Home</span></span>
+            <span class="Mask"><span>Home</span></span>
+         </li>
+         <li class="Menu-list-item" data-offset="16" onclick>
+            About
+            <span class="Mask"><span>About</span></span>
+            <span class="Mask"><span>About</span></span>
+         </li>
+         <li class="Menu-list-item" data-offset="12" onclick>
+            Work
+            <span class="Mask"><span>Work</span></span>
+            <span class="Mask"><span>Work</span></span>
+         </li>
+         <li class="Menu-list-item" data-offset="8" onclick>
+            Contact
+            <span class="Mask"><span>Contact</span></span>
+            <span class="Mask"><span>Contact</span></span>
+         </li>
+         <li class="Menu-list-item" data-offset="4" onclick>
+            XSS
+            <span class="Mask"><span>XSS</span></span>
+            <span class="Mask"><span>XSS</span></span>
+         </li>
+      </ul>
+   </div>
+</main>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/main/mainViewLayout}" lang="ko">
+
+<th:block layout:fragment="css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap">
+    <link rel="stylesheet" href="/css/common/main/board/list.css">
+    <link rel="stylesheet" href="/css/common/main/board/write.css">
+</th:block>
+
+<th:block layout:fragment="script">
+    <script src="/js/common/main/board/posts.js"></script>
+</th:block>
+
+<main layout:fragment="content" class="px-3">
+    <div class="task-manager">
+        <div class="left-bar">
+            <div class="upper-part">
+                <div class="actions">
+                    <div class="circle"></div>
+                    <div class="circle-2"></div>
+                </div>
+            </div>
+            <div class="left-content">
+                <ul class="action-list">
+                    <li class="item" onclick="location.href='/main/board/list'">
+                        <i class="far fa-clipboard me-2"></i>
+                        <span>게시글 보기</span>
+                    </li>
+                    <li class="item" onclick="location.href='/main/board/write'">
+                        <i class="fas fa-pencil-alt me-2"></i>
+                        <span>게시글 작성</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="header">게시판</div>
+            <div class="content-categories">
+                <div class="window-main-header">
+                    <ol class="breadcrumbs">
+                        <li class="breadcrumbs-item"><a href="#">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.6 3H20.4C20.7314 3 21 3.26863 21 3.6V20.4C21 20.7314 20.7314 21 20.4 21H3.6C3.26863 21 3 20.7314 3 20.4V3.6C3 3.26863 3.26863 3 3.6 3Z" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M9.75 9.75V21" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M3 9.75H21" stroke="currentColor" stroke-width="1.5" />
+                            </svg>게시판</a></li>
+                        <li class="breadcrumbs-item current">
+                            <a href="#">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 21.4V2.6C4 2.26863 4.26863 2 4.6 2H16.2515C16.4106 2 16.5632 2.06321 16.6757 2.17574L19.8243 5.32426C19.9368 5.43679 20 5.5894 20 5.74853V21.4C20 21.7314 19.7314 22 19.4 22H4.6C4.26863 22 4 21.7314 4 21.4Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M16 5.4V2.35355C16 2.15829 16.1583 2 16.3536 2C16.4473 2 16.5372 2.03725 16.6036 2.10355L19.8964 5.39645C19.9628 5.46275 20 5.55268 20 5.64645C20 5.84171 19.8417 6 19.6464 6H16.6C16.2686 6 16 5.73137 16 5.4Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 10L16 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 18L16 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8 14L12 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                새로운 게시글 작성
+                            </a>
+                        </li>
+                    </ol>
+                    <div class="publish-actions">
+                        <div class="publish-info">
+                        </div>
+
+                        <th:block th:if="${postsFormDto.Id != null}">
+                            <button class="button button--modify">
+                                <i class="fas fa-edit me-2"></i>
+                                Modify
+                            </button>
+                        </th:block>
+
+                        <th:block th:unless="${postsFormDto.Id != null}">
+                            <button class="button button--save">
+                                <i class="far fa-save me-2"></i>
+                                Save
+                            </button>
+                        </th:block>
+
+                        <button class="button button--cancel">
+                            <i class="far fa-window-close me-2"></i>
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-wrapper">
+                <form class="editor" th:object="${postsFormDto}">
+                    <div class="form__group field">
+                        <input type="text" class="form__field" th:field="*{postsTitle}" placeholder=" " required />
+                        <label for="postsTitle" class="form__label">제목</label>
+                    </div>
+
+                    <div class="editor-toolbar">
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-undo-alt"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-redo-alt"></i>
+                        </button>
+                        <span class="separator"></span>
+                        <button class="editor-toolbar-item dropdown">
+                            <span>텍스트</span>
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                        <span class="separator"></span>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-bold"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-italic"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-strikethrough"></i>
+                        </button>
+                        <span class="separator"></span>
+                        <button class="editor-toolbar-item icon">
+                            <i class="far fa-image"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-paperclip"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="far fa-file-alt"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-table"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-video"></i>
+                        </button>
+                        <span class="separator"></span>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-code"></i>
+                        </button>
+                        <span class="separator"></span>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-quote-right"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-list-ul"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-list-ol"></i>
+                        </button>
+                        <span class="separator"></span>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-align-justify"></i>
+                        </button>
+                        <button class="editor-toolbar-item icon">
+                            <i class="fas fa-align-right"></i>
+                        </button>
+                    </div>
+                    <div class="editor-textarea">
+                        <label for="postsContent"></label>
+                        <textarea class="editor-textarea-editable" id="postsContent" spellcheck="false" th:text="${postsFormDto.postsContent}">${postsFormDto.postsContent}</textarea>
+                        <th:block th:if="${postsFormDto.Id != null}">
+                            <input type="hidden" id="postsIdx" th:value="${postsFormDto.Id}">
+                        </th:block>
+                    </div>
+<!--                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />-->
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
